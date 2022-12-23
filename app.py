@@ -80,7 +80,7 @@ def contruct_data(data):
     # Calculate EQ
     eq = equity - abs(private) - abs(costs) - zvw_to_be_paid
 
-    # Calculate VAT to be paid
+    # Calculate VVK
     crediteuren = 0
     #current_vat_to_be_paid
     
@@ -312,9 +312,12 @@ def main():
                     traceback.print_exc()
                     st.error('error')
                 
-            st.success('done')    
+            st.success('done')
 
-if __name__ == '__main__':
+            st.experimental_memo.clear()
+            st.experimental_rerun()
+
+
+if __name__ == '__main__':  
 
     main()
-    
