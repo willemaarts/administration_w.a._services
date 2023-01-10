@@ -151,7 +151,7 @@ def main():
         locale.setlocale(locale.LC_ALL, '') # Use '' for auto, or force e.g. to 'nl_NL.UTF-8' 
 
         disabled = 1
-        current_month = (int(datetime.now().strftime('%m') - 1))
+        current_month = (int(datetime.now().strftime('%m')))
 
         # If session stage = False, retreive data
         if st.session_state.run == False:
@@ -167,12 +167,19 @@ def main():
 
         df['date'] = pd.to_datetime(df['date'], infer_datetime_format=True)
 
+        try:
         # --- Initializing query selections in sidebar ---
-        month_select = st.sidebar.multiselect(
-            'Select months:',
-            options=df['month'].unique(),
-            default=str(current_month)
-        )
+            month_select = st.sidebar.multiselect(
+                'Select months:',
+                options=df['month'].unique(),
+                default=str(current_month)
+            )
+        except:
+            month_select = st.sidebar.multiselect(
+                'Select months:',
+                options=df['month'].unique(),
+                default=str("dec")
+            )
 
         balance_Select = st.sidebar.multiselect(
             'Select the balancesheet item:',
