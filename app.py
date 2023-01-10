@@ -151,7 +151,7 @@ def main():
         locale.setlocale(locale.LC_ALL, '') # Use '' for auto, or force e.g. to 'nl_NL.UTF-8' 
 
         disabled = 1
-        current_month = (int(datetime.now().strftime('%m')))
+        current_month = (int(datetime.now().strftime('%m') - 1))
 
         # If session stage = False, retreive data
         if st.session_state.run == False:
@@ -171,7 +171,7 @@ def main():
         month_select = st.sidebar.multiselect(
             'Select months:',
             options=df['month'].unique(),
-            default=str(current_month - 1)
+            default=str(current_month)
         )
 
         balance_Select = st.sidebar.multiselect(
