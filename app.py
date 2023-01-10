@@ -171,7 +171,7 @@ def main():
         month_select = st.sidebar.multiselect(
             'Select months:',
             options=df['month'].unique(),
-            default=str(current_month)
+            default=str(current_month - 1)
         )
 
         balance_Select = st.sidebar.multiselect(
